@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="resource">
+    <file>../images/icons/16_update_version-16.png</file>
+    <file>../images/icons/change-version-16.png</file>
+    <file>../images/icons/close-16.png</file>
+    <file>../images/icons/config-16.png</file>
+    <file>../images/icons/Connect-16.png</file>
+    <file>../images/icons/home-16.png</file>
+    <file>../images/icons/log-16.png</file>
+    <file>../images/icons/max-16.png</file>
+    <file>../images/icons/min-16.png</file>
+    <file>../images/icons/Restart-16.png</file>
+    <file>../images/icons/setting-16.png</file>
+    <file>../images/icons/start-16.png</file>
+    <file>../images/icons/stop-16.png</file>
+    <file>../images/icons/toggle-16.png</file>
+    <file>../images/icons/video-game-mario-3-32.png</file>
+  </qresource>
+</RCC>
