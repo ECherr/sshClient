@@ -21,29 +21,29 @@ class MainWindow(QMainWindow):
         
         # 设置 title 以及 description
         title = "xxxx"
-        description = "xxxxxx"
+        # description = "xxxxxx"
         self.setWindowTitle(title)
-        widgets.titleRightInfo.setText(description)
+        # widgets.titleRightInfo.setText(description)
         
         # toggle menu
         # 将展开按钮的点击事件连接到处理函数
-        widgets.toggleButton.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
+        # widgets.btnToggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
         
         # UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
         
         # QTableWidget PARAMETERS
-        widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         
         # BUTTON CLICK
-        widgets.btn_home.clicked.connect(self.buttonClick)
+        # widgets.btnHome.clicked.connect(self.buttonClick)
         # xxx 
         
         # EXTRA LEFT BOX
-        def openCloseLeftBox():
-            UIFunctions.toggleLeftBox(self, True)
-        widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
+        # def openCloseLeftBox():
+        #     UIFunctions.toggleLeftBox(self, True)
+        # widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
+        # widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
         
         # EXTRAT RIGHT BOX
         

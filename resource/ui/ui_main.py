@@ -12,7 +12,7 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
-from . rc_main import *
+import main_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
