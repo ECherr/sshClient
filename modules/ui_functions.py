@@ -32,10 +32,11 @@ class UIFunctions(MainWindow):
         if status == False:
             self.showMaximized()
             GLOBAL_STATE = True
-            self.ui.appMargins.setContentsMargins(0, 0, 0, 0)
-            self.ui.maximizeRestoreAppBtn.setToolTip("Restore")
-            self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_restore.png"))
-            self.ui.frame_size_grip.hide()
+
+            self.ui.verticalLayout.setContentsMargins(0, 0, 0, 0)
+            self.ui.btnMax.setToolTip("Restore")
+            # self.ui.btnMax.setIcon(QIcon(u":/icons/images/icons/icon_restore.png"))
+            # self.ui.frame_size_grip.hide()
             self.left_grip.hide()
             self.right_grip.hide()
             self.top_grip.hide()
@@ -44,10 +45,10 @@ class UIFunctions(MainWindow):
             GLOBAL_STATE = False
             self.showNormal()
             self.resize(self.width()+1, self.height()+1)
-            self.ui.appMargins.setContentsMargins(10, 10, 10, 10)
-            self.ui.maximizeRestoreAppBtn.setToolTip("Maximize")
-            self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_maximize.png"))
-            self.ui.frame_size_grip.show()
+            self.ui.verticalLayout.setContentsMargins(10, 10, 10, 10)
+            self.ui.btnMax.setToolTip("Maximize")
+            # self.ui.btnMax.setIcon(QIcon(u":/icons/images/icons/icon_maximize.png"))
+            # self.ui.frame_size_grip.show()
             self.left_grip.show()
             self.right_grip.show()
             self.top_grip.show()
@@ -71,10 +72,10 @@ class UIFunctions(MainWindow):
             # GET WIDTH
             width = self.ui.menu.width()
             maxExtend = Settings.MENU_WIDTH
-            standard = 60
+            standard = 50
 
             # SET MAX WIDTH
-            if width == 60:
+            if width == 50:
                 widthExtended = maxExtend
             else:
                 widthExtended = standard
@@ -248,7 +249,7 @@ class UIFunctions(MainWindow):
             self.ui.btnMin.hide()
             self.ui.btnMax.hide()
             self.ui.btnClose.hide()
-            self.ui.frame_size_grip.hide()
+            # self.ui.frame_size_grip.hide()
 
         # DROP SHADOW
         self.shadow = QGraphicsDropShadowEffect(self)
@@ -256,20 +257,20 @@ class UIFunctions(MainWindow):
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(0, 0, 0, 150))
-        # self.ui.bgApp.setGraphicsEffect(self.shadow)
+        self.ui.bgApp.setGraphicsEffect(self.shadow)
 
         # RESIZE WINDOW
         # self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
         # self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
 
         # MINIMIZE
-        # self.ui.btnMin.clicked.connect(lambda: self.showMinimized())
+        self.ui.btnMin.clicked.connect(lambda: self.showMinimized())
 
         # MAXIMIZE/RESTORE
-        # self.ui.btnMax.clicked.connect(lambda: UIFunctions.maximize_restore(self))
+        self.ui.btnMax.clicked.connect(lambda: UIFunctions.maximize_restore(self))
 
         # CLOSE APPLICATION
-        # self.ui.btnClose.clicked.connect(lambda: self.close())
+        self.ui.btnClose.clicked.connect(lambda: self.close())
 
     def resize_grips(self):
         if Settings.ENABLE_CUSTOM_TITLE_BAR:

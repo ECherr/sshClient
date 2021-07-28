@@ -12,83 +12,116 @@ class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
         
-        # UI 转换后的类
+        # 设置为全局的 widgets
         self.ui = Ui_MainWindow()
-        
-        # 将类捆绑到自定义的widgets上?
+        self.ui.setupUi(self)
         global widgets
         widgets = self.ui
         
-        # 设置 title 以及 description
-        title = "xxxx"
-        # description = "xxxxxx"
+        # 自定义标题
+        Settings.ENABLE_CUSTOM_TITLE_BAR =True
+        
+        # 设置标题
+        title = "XXX - XXX"
         self.setWindowTitle(title)
-        # widgets.titleRightInfo.setText(description)
         
-        # toggle menu
-        # 将展开按钮的点击事件连接到处理函数
-        # widgets.btnToggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
+        # 隐藏菜单
+        widgets.btnToggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, True))
         
-        # UI DEFINITIONS
         UIFunctions.uiDefinitions(self)
         
-        # QTableWidget PARAMETERS
-        # widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # 连接按钮函数
+        widgets.btnDisconnectHome.clicked.connect(self.buttonClick)
+        widgets.btnDisconnectConfig.clicked.connect(self.buttonClick)
+        widgets.btnConnectHome.clicked.connect(self.buttonClick)
+        widgets.btnConnectConfig.clicked.connect(self.buttonClick)
+        widgets.btnConnectLog.clicked.connect(self.buttonClick)
+        widgets.btnConnectChange.clicked.connect(self.buttonClick)
+        widgets.btnConnectUpdate.clicked.connect(self.buttonClick)
+        widgets.btnConnectRestart.clicked.connect(self.buttonClick)
+        widgets.btnConnectStart.clicked.connect(self.buttonClick)
+        widgets.btnConnectStop.clicked.connect(self.buttonClick)
         
-        # BUTTON CLICK
-        # widgets.btnHome.clicked.connect(self.buttonClick)
-        # xxx 
-        
-        # EXTRA LEFT BOX
-        # def openCloseLeftBox():
-        #     UIFunctions.toggleLeftBox(self, True)
-        # widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
-        # widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
-        
-        # EXTRAT RIGHT BOX
-        
-        # SHOW APP
         self.show()
         
-        # SET CUSTOM THEME
         useCustomTheme = False
-        themeFile = "theme/py_dracula_light.qss"
+        themeFile = r"resource\themes\py_dracula_light.qss"
         
-        # SET THEME AND HACKS
         if useCustomTheme:
             UIFunctions.theme(self, themeFile, True)
             
-            # SET HACKS
+            # Set Hacks
             AppFunctions.setThemeHack(self)
-            
-        # SET HOME PAGE AND SELECT MENU
-        widgets.stackedWidget.setCurrentWidget(widgets.home)
-        widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.setStyleSheet()))
         
-    
-    # BUTTON CLICK
-    # Post here your function for clicked buttons
+        
+    # 按钮点击事件函数
     def buttonClick(self):
         btn = self.sender()
         btnName = btn.objectName()
         
-        if btnName == "btn_home":
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+        # Home Page(disconnect)
+        if btnName == "btnDisconnectHome":
+            print("btnDisconnectHome clicked!")
+        
+        # Config Page(disconnect)
+        if btnName == "btnDisconnectConfig":
+            print("btnDisconnectConfig clicked!")
             
+        # Home Page(connect)
+        if btnName == "btnConnectHome":
+            # widgets.stackedWidget.setCurrentWidget(widgets.pagesConnect)
+            # UIFunctions.resetStyle(self.btnName)
+            # btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+            print("btnConnectHome clicked!")
             
+        # Config Page(connect)
+        if btnName == "btnConnectConfig":
+            print("btnConnectConfig clicked!")
             
-    # RESIZE EVENTS
-    def resizeEvent(self, event):
-        # SET DRAG POS WINDOWS
+        # Log Page(connect)
+        if btnName == "btnConnectLog":
+            print("btnConnectLog clicked!")
+            
+        # Handover Page(connect)
+        if btnName == "btnConnectChange":
+            print("btnConnectChange clicked!")
+            
+        # Update Page(connect)
+        if btnName == "btnConnectUpdate":
+            print("btnConnectUpdate clicked!")
+            
+        # Restart
+        if btnName == "btnConnectRestart":
+            print("btnConnectRestart clicked!")
+            
+        # Start
+        if btnName == "btnConnectStart":
+            print("btnConnectStart clicked")
+            
+        # Stop
+        if btnName == "btnConnectStop":
+            print("btnConnectStop clicked!")
+            
+        print(f'Button "{btnName}" pressed!')
+        
+    # Mouse Click Events
+    def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
         
-        # PRINT MOUSE EVENTS
         if event.buttons() == Qt.LeftButton:
-            print('Left Click')
+            print("Mouse Click: LEFT CLICK")
         if event.buttons() == Qt.RightButton:
-            print('Right Click')
+            print("Mouse Click: RIGHT CLICK")
+        # if event.button(
+    
+    # Resize Events
+    def resizeEvent(self, event):
+        UIFunctions.resize_grips(self)
+        
+    
+        
+        
+        
             
             
 if __name__ == "__main__":
